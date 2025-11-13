@@ -227,7 +227,7 @@ static void mainMenu() {
         System.out.println("Calculating average cycle length...");
         System.out.println("Average cycle length: " + (int) avgCycleLength + " days");
         System.out.println("Your next period is likely to start on: " + predictedStart);
-        System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------");
 
         System.out.println("\nPredicted Menstrual Phases Based on Your Average Data:");
         System.out.println("-------------------------------------------------------------------------------------");
@@ -362,3 +362,4 @@ static void mainMenu() {
         return mostCommon;
     }
 }
+
