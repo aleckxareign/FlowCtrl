@@ -179,7 +179,7 @@ static void mainMenu() {
 
     static void viewCycleHistory() {
         System.out.println("\n=====================================================================================");
-        System.out.println("      Cycle History for " + loggedInUser.getName());
+        System.out.println("                               Cycle History for " + loggedInUser.getName());
         System.out.println("=====================================================================================");
         System.out.printf("%-3s | %-12s | %-12s | %-8s | %-25s | %-15s%n",
                 "#", "Start Date", "End Date", "Duration", "Symptoms", "Mood");
@@ -362,4 +362,5 @@ static void mainMenu() {
         return mostCommon;
     }
 }
+
 
