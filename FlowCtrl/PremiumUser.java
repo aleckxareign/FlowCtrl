@@ -75,7 +75,7 @@ public class PremiumUser extends User {
             tip = "Your recent moods show some stress or fatigue. Try slowing down, hydrating, or taking time for yourself.";
             break;
         default:
-            tip = "Your mood's been steady! Keeping track of your awareness helps you stay balanced.";
+            tip = "Your mood's holding steady! Keep tuning in to yourself, staying mindful helps you maintain balance.";
             break;
     }
     System.out.println("\nHealth Tip Based on Your Overall Mood:");
@@ -83,4 +83,5 @@ public class PremiumUser extends User {
     System.out.println("----------------------------------------------------------------------------------------------");
 }
 }
+
 
