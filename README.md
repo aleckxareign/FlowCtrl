@@ -11,7 +11,6 @@
 
 </div>
 
----
 
 ## 📌 Overview
 FlowCtrl is a Java console application that helps users track their menstrual cycles, symptoms, and emotional patterns.  
@@ -164,7 +163,6 @@ Luteal       | 2025-12-30     | 2026-01-12
 
 We sincerely thank our instructor for guiding and supporting us throughout this Java OOP project.
 
----
 
 ## ⚠️ Disclaimer
 
