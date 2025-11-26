@@ -1,10 +1,15 @@
-# 🌸 FlowCtrl — Menstrual Cycle & Mood Tracker
-### *Menstrual Cycle • Symptoms • Mood Tracker*  
-**CS 2102**
-- Boo, Vianci Mariz G.  
-- Bugtong, Aleckxa Reign D.  
-- Cruzat, Angelyn A.  
-- Rioflorido, Juliana Cecile P.  
+<div align="center">
+
+# 🌸 FlowCtrl — Menstrual Cycle & Mood Tracker  
+### Menstrual Cycle • Symptoms • Mood Tracker  
+### CS 2102  
+
+**Boo, Vianci Mariz G.**  
+**Bugtong, Aleckxa Reign D.**  
+**Cruzat, Angelyn A.**  
+**Rioflorido, Juliana Cecile P.**
+
+</div>
 
 ---
 
