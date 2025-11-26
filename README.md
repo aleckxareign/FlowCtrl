@@ -145,12 +145,12 @@ Luteal       | 2025-12-30     | 2026-01-12
 
 
 ## 👥 Contributors  
-| Member | Role | File Link | Image |
-|--------|------|-----------|--------|
-| Boo, Vianci Mariz G. | Developer, Documentation, Tester, Designer | [View File](https://drive.google.com/file/d/1EcADetEZypn23-_FfFK_8P5R6lrehZk_/view) | ![](https://drive.google.com/uc?export=view&id=1EcADetEZypn23-_FfFK_8P5R6lrehZk_) |
-| Bugtong, Aleckxa Reign D. | Developer, Documentation, Tester, Designer | [View File](https://drive.google.com/file/d/1vVzx1wD6-53DwIQCKy0zVBlSPWoAdY_5/view) | ![](https://drive.google.com/uc?export=view&id=1vVzx1wD6-53DwIQCKy0zVBlSPWoAdY_5) |
-| Cruzat, Angelyn A. | Developer, Documentation, Tester, Designer | [View File](https://drive.google.com/file/d/11M2r1ZerTMxrs41bKIgkEnAimYNt0Vmd/view) | ![](https://drive.google.com/uc?export=view&id=11M2r1ZerTMxrs41bKIgkEnAimYNt0Vmd) |
-| Rioflorido, Juliana Cecile P. | Developer, Documentation, Tester, Designer | [View File](https://drive.google.com/file/d/1iGUFOAxJkcblswhBl0w2SliXSdIJed2q/view) | ![](https://drive.google.com/uc?export=view&id=1iGUFOAxJkcblswhBl0w2SliXSdIJed2q) |
+| Member | Role |
+|--------|------|
+| **Boo, Vianci Mariz G.** <br> <img src="https://github.com/user-attachments/assets/2c04791e-1481-4b8c-b740-34ca3a33ace2" width="150"> | Developer, Documentation, Tester, Designer |
+| **Bugtong, Aleckxa Reign D.** <br> <img src="https://github.com/user-attachments/assets/48f7a242-fe15-4529-9e19-392a662e6527" width="150"> | Developer, Documentation, Tester, Designer |
+| **Cruzat, Angelyn A.** <br> <img src="https://github.com/user-attachments/assets/954bb0ed-286f-4190-a638-a8a308bbe1f7" width="150"> | Developer, Documentation, Tester, Designer |
+| **Rioflorido, Juliana Cecile P.** <br> <img src="https://github.com/user-attachments/assets/6732229e-731f-4033-b31f-883d555dd8cc" width="150"> | Developer, Documentation, Tester, Designer |
 
 
 ---
