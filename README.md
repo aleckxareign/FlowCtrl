@@ -266,10 +266,6 @@ We sincerely thank our instructor for guiding and supporting us throughout this 
 
 ---
 
-**"FlowCtrl - Empowering health awareness through technology, one cycle at a time" 🌸💪**
-
----
-
 # ⚠️ Disclaimer
 
 FlowCtrl provides **estimates only**.
