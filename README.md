@@ -11,7 +11,6 @@
 
 </div>
 
----
 
 ## 📌 Overview
 
@@ -20,7 +19,6 @@ The system analyzes cycle data and provides predictive insights and health analy
 
 This project demonstrates strong application of **Object-Oriented Programming (OOP)** principles through a clean, modular class structure.
 
----
 
 # 🧩 Program Structure
 
@@ -42,7 +40,6 @@ FlowCtrl (Main Controller)
 
 ```
 
----
 
 # 🏗️ Main Classes & Their Roles
 
@@ -56,7 +53,6 @@ FlowCtrl (Main Controller)
 | **MoodCycle** | Enhanced cycle model | Mood recording + emotional assessment |
 | **Person** | Abstract identity class | Name, email, password fields |
 
----
 
 # 🔧 FlowCtrl Key Methods
 
@@ -72,7 +68,6 @@ FlowCtrl (Main Controller)
 | **getAverageCycleLength()** | Computes average duration |
 | **getMostCommonSymptom()** | Finds symptom frequency patterns |
 
----
 
 # ✨ Key Features
 
@@ -109,7 +104,6 @@ Automatically estimates:
 - Neatly formatted console table  
 - Shows all relevant cycle information  
 
----
 
 # 🧠 OOP Concepts Used
 
@@ -127,13 +121,11 @@ Overridden methods like `isPremium()` and feature-specific behavior.
 ### 🔷 Abstraction  
 Shared logic in abstract classes (`BaseUser`, `Person`).
 
----
 
 # ⚙️ Tech Requirements
 
 - **Java 17 or later**
 
----
 
 # 📂 Project Structure
 
@@ -151,7 +143,6 @@ Shared logic in abstract classes (`BaseUser`, `Person`).
 
 ````
 
----
 
 # 🚀 How to Run the Program
 
@@ -161,7 +152,6 @@ https://www.java.com/download
 
 Install normally.
 
----
 
 ## **Step 2: Place All Files in One Folder**
 Make sure these files are together:
@@ -174,7 +164,6 @@ Make sure these files are together:
 - Cycle.java  
 - MoodCycle.java  
 
----
 
 ## **Step 3: Open Command Prompt / Terminal**
 
@@ -184,7 +173,6 @@ Press **Windows Key + R** → type `cmd` → Enter
 ### Mac:
 Press **Command + Space** → type `terminal` → Enter  
 
----
 
 ## **Step 4: Go to Your Program Folder**
 
@@ -193,7 +181,6 @@ Example:
 cd Downloads/FlowCtrl
 ````
 
----
 
 ## **Step 5: Compile the Program**
 
@@ -203,7 +190,6 @@ javac *.java
 
 If no errors appear, you're good!
 
----
 
 ## **Step 6: Run the Program**
 
@@ -211,7 +197,6 @@ If no errors appear, you're good!
 java FlowCtrl
 ```
 
----
 
 # 📝 Sample Output
 
@@ -250,9 +235,7 @@ Follicular   | 2025-12-18     | 2025-12-27
 Ovulation    | 2025-12-28     | 2025-12-29
 Luteal       | 2025-12-30     | 2026-01-12
 -------------------------------------------------------------------------------------
-```
 
----
 
 # 👥 Contributors
 
@@ -263,13 +246,11 @@ Luteal       | 2025-12-30     | 2026-01-12
 | **Cruzat, Angelyn A.** <br><img src="https://github.com/user-attachments/assets/954bb0ed-286f-4190-a638-a8a308bbe1f7" width="140">            | Developer, Documentation, Tester, Designer |
 | **Rioflorido, Juliana Cecile P.** <br><img src="https://github.com/user-attachments/assets/6732229e-731f-4033-b31f-883d555dd8cc" width="140"> | Developer, Documentation, Tester, Designer |
 
----
 
 # 💗 Acknowledgments
 
 We gratefully acknowledge the guidance and academic support of Prof. Fatima Marie P. Agdon, whose mentorship has been instrumental in the successful completion of this study.
 
----
 
 # ⚠️ Disclaimer
 
