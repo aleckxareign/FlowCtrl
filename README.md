@@ -7,7 +7,7 @@
 **Boo, Vianci Mariz G.**  
 **Bugtong, Aleckxa Reign D.**  
 **Cruzat, Angelyn A.**  
-**Rioflorido, Juliana Cecile P.** 
+**Rioflorido, Juliana Cecile P.**
 
 </div>
 
@@ -105,6 +105,7 @@ Automatically estimates:
 - Shows all relevant cycle information  
 
 
+
 # 🧠 OOP Concepts Used
 
 ### 🔷 Encapsulation  
@@ -122,9 +123,11 @@ Overridden methods like `isPremium()` and feature-specific behavior.
 Shared logic in abstract classes (`BaseUser`, `Person`).
 
 
+
 # ⚙️ Tech Requirements
 
 - **Java 17 or later**
+
 
 
 # 📂 Project Structure
@@ -143,6 +146,7 @@ Shared logic in abstract classes (`BaseUser`, `Person`).
 
 ````
 
+---
 
 # 🚀 How to Run the Program
 
@@ -197,6 +201,7 @@ If no errors appear, you're good!
 java FlowCtrl
 ```
 
+---
 
 # 📝 Sample Output
 
@@ -223,7 +228,9 @@ Your recent moods suggest stress or fatigue. Consider resting, hydrating, or tak
 
 ---
 
-🔮 Prediction Example
+# 🔮 Prediction Example
+
+```
 Predicted Menstrual Phases Based on Your Average Data:
 -------------------------------------------------------------------------------------
 Phase        | Start Date     | End Date
@@ -233,28 +240,30 @@ Follicular   | 2025-12-18     | 2025-12-27
 Ovulation    | 2025-12-28     | 2025-12-29
 Luteal       | 2025-12-30     | 2026-01-12
 -------------------------------------------------------------------------------------
+```
 
+---
 
-👥 Contributors
-Member
-Role
-Boo, Vianci Mariz G.
-<img src="https://github.com/user-attachments/assets/2c04791e-1481-4b8c-b740-34ca3a33ace2" width="125">
-Developer, Documentation, Tester, Designer
-Bugtong, Aleckxa Reign D.
-<img src="https://github.com/user-attachments/assets/48f7a242-fe15-4529-9e19-392a662e6527" width="115">
-Developer, Documentation, Tester, Designer
-Cruzat, Angelyn A.
-<img src="https://github.com/user-attachments/assets/954bb0ed-286f-4190-a638-a8a308bbe1f7" width="140">
-Developer, Documentation, Tester, Designer
-Rioflorido, Juliana Cecile P.
-<img src="https://github.com/user-attachments/assets/6732229e-731f-4033-b31f-883d555dd8cc" width="140">
-Developer, Documentation, Tester, Designer
+# 👥 Contributors
 
+| Member                                                                                                                                        | Role                                       |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| **Boo, Vianci Mariz G.** <br><img src="https://github.com/user-attachments/assets/2c04791e-1481-4b8c-b740-34ca3a33ace2" width="125">          | Developer, Documentation, Tester, Designer |
+| **Bugtong, Aleckxa Reign D.** <br><img src="https://github.com/user-attachments/assets/48f7a242-fe15-4529-9e19-392a662e6527" width="115">     | Developer, Documentation, Tester, Designer |
+| **Cruzat, Angelyn A.** <br><img src="https://github.com/user-attachments/assets/954bb0ed-286f-4190-a638-a8a308bbe1f7" width="140">            | Developer, Documentation, Tester, Designer |
+| **Rioflorido, Juliana Cecile P.** <br><img src="https://github.com/user-attachments/assets/6732229e-731f-4033-b31f-883d555dd8cc" width="140"> | Developer, Documentation, Tester, Designer |
 
-💗 Acknowledgments
+---
+
+# 💗 Acknowledgments
+
 We sincerely thank our instructor for guiding and supporting us throughout this Java OOP project.
 
-⚠️ Disclaimer
-FlowCtrl provides estimates only.
- It is not a medical device and should not replace professional healthcare advice.
+---
+
+# ⚠️ Disclaimer
+
+FlowCtrl provides **estimates only**.
+It is **not** a medical device and should not replace professional healthcare advice.
+
+```
