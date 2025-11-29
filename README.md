@@ -8,6 +8,7 @@
 **Bugtong, Aleckxa Reign D.**  
 **Cruzat, Angelyn A.**  
 **Rioflorido, Juliana Cecile P.**
+**Macarilay, Lester**
 
 </div>
 
