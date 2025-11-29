@@ -246,14 +246,17 @@ Luteal       | 2025-12-30     | 2026-01-12
 | **Cruzat, Angelyn A.** <br><img src="https://github.com/user-attachments/assets/954bb0ed-286f-4190-a638-a8a308bbe1f7" width="140">            | Developer, Documentation, Tester, Designer |
 | **Rioflorido, Juliana Cecile P.** <br><img src="https://github.com/user-attachments/assets/6732229e-731f-4033-b31f-883d555dd8cc" width="140"> | Developer, Documentation, Tester, Designer |
 
+---
 
 # 💗 Acknowledgments
 
 We gratefully acknowledge the guidance and academic support of Prof. Fatima Marie P. Agdon, whose mentorship has been instrumental in the successful completion of this study.
 
+---
 
 # ⚠️ Disclaimer
 
 FlowCtrl provides **estimates only**.
 It is **not** a medical device and should not replace professional healthcare advice.
 
+---
