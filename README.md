@@ -260,9 +260,19 @@ Luteal       | 2025-12-30     | 2026-01-12
 We sincerely thank our instructor for guiding and supporting us throughout this Java OOP project.
 
 ---
+# 👥 References
+- Java Official Documentation
+- Object-Oriented Programming Principles (Encapsulation, Inheritance, Polymorphism, Abstraction)
+
+---
+
+**"FlowCtrl - Empowering health awareness through technology, one cycle at a time" 🌸💪**
+
+---
 
 # ⚠️ Disclaimer
 
 FlowCtrl provides **estimates only**.
 It is **not** a medical device and should not replace professional healthcare advice.
 
+---
