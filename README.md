@@ -267,7 +267,7 @@ Luteal       | 2025-12-30     | 2026-01-12
 
 # 💗 Acknowledgments
 
-We sincerely thank our instructor for guiding and supporting us throughout this Java OOP project.
+We gratefully acknowledge the guidance and academic support of Prof. Fatima Marie P. Agdon, whose mentorship has been instrumental in the successful completion of this study.
 
 ---
 
