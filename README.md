@@ -256,7 +256,7 @@ Luteal       | 2025-12-30     | 2026-01-12
 
 # 💗 Acknowledgments
 
-We sincerely thank our instructor for guiding and supporting us throughout this Java OOP project.
+We sincerely thank our instructor, Prof. Fatima Marie Agdon, for her valuable guidance, support, and mentorship throughout the development of this Java OOP project.
 
 -----
 
@@ -285,5 +285,4 @@ We sincerely thank our instructor for guiding and supporting us throughout this 
 FlowCtrl provides **estimates only**.
 It is **not** a medical device and should not replace professional healthcare advice.
 
-```
-```
+
