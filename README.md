@@ -158,7 +158,7 @@ Examples:
 - displayInfo() implemented differently in each child class of Person
 - displayCycleInfo() overridden in MoodCycle to add extra behavior while reusing Cycle logic
 
-🔷 Abstraction
+## 🔷 Abstraction
 Hiding complex implementation details and exposing only necessary methods.
 Examples:
 - Person.java → Abstract class with abstract method displayInfo()
