@@ -1,21 +1,11 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class User {
-    private String name;
-    private String password;
+public class User extends Person {
     protected List<Cycle> cycles = new ArrayList<>();
 
     public User(String name, String password) {
-        this.name = name;
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
+        super(name, password);
     }
 
     public List<Cycle> getCycles() {
@@ -28,5 +18,10 @@ public class User {
 
     public boolean isPremium() {
         return false;
+    }
+
+    @Override
+    public void displayInfo() {
+        System.out.println("User: " + getName() + " (Standard Account)");
     }
 }
