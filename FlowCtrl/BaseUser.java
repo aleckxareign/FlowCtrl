@@ -1,24 +1,21 @@
 import java.util.*;
 
-abstract class BaseUser {
-    private String name;
-    private String password;
-    protected List<Cycle> cycles = new ArrayList<>();
+public abstract class BaseUser extends Person {
+    private List<Cycle> cycles = new ArrayList<>();
 
     public BaseUser(String name, String password) {
-        this.name = name;
-        this.password = password;
+        super(name, password);
     }
 
-    // Encapsulation
-    public String getName() { return name; }
-    public String getPassword() { return password; }
-    public List<Cycle> getCycles() { return cycles; }
+    public List<Cycle> getCycles() {
+        return Collections.unmodifiableList(cycles);  // Encapsulation: Prevents external modification
+    }
 
     public void addCycle(Cycle c) {
+        if (c == null) throw new IllegalArgumentException("Cycle cannot be null");
         cycles.add(c);
     }
 
-    // Abstract method (for polymorphic greeting)
+    // Abstraction: Subclasses define how to greet
     public abstract void greet();
 }
