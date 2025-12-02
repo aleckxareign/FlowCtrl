@@ -136,32 +136,33 @@ FlowCtrl (Main Controller)
 
 ## 🔷 Encapsulation
 
-# Private fields with controlled access via getters and setters.
-
-# Examples:
-
-# - Cycle.java → startDate, endDate, symptoms, mood, moodValue
-
-# - User.java → name, password
-
-# - Person.java → name, password
+Private fields with controlled access via getters and setters.
+Examples:
+- Cycle.java → startDate, endDate, symptoms, mood, moodValue
+- User.java → name, password
+- Person.java → name, password
 
 ## 🔷 Inheritance
 
-# Represents “is-a” relationships between classes.
-
-# Examples:
-
-# - User extends Person → A User **is a** Person
-
-# - PremiumUser extends User → A PremiumUser **is a** User
-
-# - MoodCycle extends Cycle → A MoodCycle **is a** Cycle
+Represents “is-a” relationships between classes.
+Examples:
+- User extends Person → A User **is a** Person
+- PremiumUser extends User → A PremiumUser **is a** User
+- MoodCycle extends Cycle → A MoodCycle **is a** Cycle
 
 ## 🔷 Polymorphism
 
-# Sam
+Same method name, different behavior depending on the object type.
+Examples:
+- isPremium() overridden in User vs PremiumUser → returns false for User and true for PremiumUser
+- displayInfo() implemented differently in each child class of Person
+- displayCycleInfo() overridden in MoodCycle to add extra behavior while reusing Cycle logic
 
+🔷 Abstraction
+Hiding complex implementation details and exposing only necessary methods.
+Examples:
+- Person.java → Abstract class with abstract method displayInfo()
+- Shared logic in abstract classes like Person for all user types
 
 ---
 
