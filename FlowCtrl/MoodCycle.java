@@ -4,9 +4,10 @@ public class MoodCycle extends Cycle {
         super(startDate, endDate, symptoms, mood, moodValue);
     }
 
-    // Polymorphism: overriding display method
     @Override
     public void displayCycleInfo(int count) {
+        System.out.println("=== MoodCycle Details ===");
         super.displayCycleInfo(count);
+        System.out.println("------------------------");
     }
 }
