@@ -19,6 +19,6 @@ public abstract class Person {
         this.password = password;
     }
 
-    // Abstract method (polymorphism demonstration)
+    // Abstract method to show polymorphism
     public abstract void displayInfo();
 }
