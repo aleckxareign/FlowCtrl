@@ -27,17 +27,17 @@ This project demonstrates strong application of **Object-Oriented Programming (O
 
 ```
 
-BaseUser (abstract)
+
+Person (abstract)
+└── BaseUser (abstract)
 ├── User
 └── PremiumUser
 
 Cycle
 └── MoodCycle
 
-Person (abstract)
-└── User implementations
-
 FlowCtrl (Main Controller)
+
 
 ```
 
@@ -45,86 +45,123 @@ FlowCtrl (Main Controller)
 
 # 🏗️ Main Classes & Their Roles
 
-| Class | Purpose | Key Features |
-|-------|---------|--------------|
-| **FlowCtrl** | Main controller class | Menu navigation, authentication, business logic |
-| **BaseUser** | Abstract parent class | User management, cycle history storage |
-| **User** | Regular user | Basic cycle tracking |
-| **PremiumUser** | Premium user tier | Advanced analytics & health insights |
-| **Cycle** | Cycle data model | Start/end dates, duration calculation, symptoms |
-| **MoodCycle** | Enhanced cycle model | Mood recording + emotional assessment |
-| **Person** | Abstract identity class | Name, email, password fields |
+| Class | Purpose | Key Features / Notes |
+|-------|---------|--------------------|
+| **FlowCtrl** | Main controller class | CLI menu, sign-up/login, cycle management, predictions, health insights |
+| **Person** | Abstract class | Stores user credentials; enforces `displayInfo()` for polymorphism |
+| **BaseUser** | Abstract user class | Encapsulates `cycles` list; abstract `greet()` method |
+| **User** | Standard user | Adds cycles, basic cycle tracking, overrides `displayInfo()` |
+| **PremiumUser** | Premium user | Provides health insights, cycle regularity score, mood-based tips |
+| **Cycle** | Cycle data model | Start/end dates, symptoms, mood, cycle length calculation |
+| **MoodCycle** | Extended cycle model | Overridden display method for cycle info |
 
 ---
 
 # 🔧 FlowCtrl Key Methods
 
-| Method | Description |
-|--------|-------------|
-| **main()** | Entry point of the program |
-| **signUp()** | Registers new users (regular or premium) |
-| **login()** | Handles secure login/authentication |
-| **mainMenu()** | Main navigation hub |
-| **addCycle()** | Adds a full cycle with dates, symptoms, mood |
-| **viewCycleHistory()** | Shows formatted table of past cycles |
-| **predictNextCycle()** | Forecasts phases and next period |
-| **getAverageCycleLength()** | Computes average duration |
-| **getMostCommonSymptom()** | Finds symptom frequency patterns |
+## **FlowCtrl.java**
+- `main()` → Program entry point, displays welcome menu  
+- `signUp()` → Create standard or premium accounts  
+- `login()` → Authenticate user  
+- `mainMenu()` → Navigation hub after login  
+- `addCycle()` → Input new cycle details (dates, symptoms, mood)  
+- `viewCycleHistory()` → Display user's cycle history as table  
+- `predictNextCycle()` → Forecast next cycle and menstrual phases  
+- `getMoodString(int)` → Convert mood integer (1–5) to descriptive label  
+- `getAverageCycleLength(User)` → Calculate average cycle interval  
+- `getAverageDuration(User)` → Calculate average period duration  
+- `getMostCommonSymptom(User)` → Determine most frequent symptom
+
+## **Person.java**
+- Abstract `displayInfo()` → Polymorphic behavior  
+- Getters/setters for `name` and `password`  
+
+## **BaseUser.java**
+- `getCycles()` → Returns unmodifiable list (Encapsulation)  
+- `addCycle(Cycle)` → Add cycle safely  
+- Abstract `greet()` → Implemented in subclasses  
+
+## **User.java**
+- `getCycles()` / `addCycle()` → Manage cycles  
+- `isPremium()` → Returns `false`  
+- `displayInfo()` → Standard account info  
+
+## **PremiumUser.java**
+- `isPremium()` → Returns `true`  
+- `displayInfo()` → Premium account info  
+- `viewHealthInsights()` → Average cycle length, mood, regularity, and tips  
+
+## **Cycle.java**
+- Getters for all properties  
+- `getCycleLength()` → Calculate number of days between start and end  
+
+## **MoodCycle.java**
+- `displayCycleInfo(int)` → Enhanced display of cycle details  
 
 ---
 
 # ✨ Key Features
 
 ### 👤 User System
-- Sign Up & Login  
-- Regular & Premium user accounts  
-- Password validation  
-- Stores users in memory  
+- Sign Up & Login  
+- Standard & Premium accounts  
+- Password validation  
+- Users stored in memory  
 
 ### 📅 Cycle Tracking
-- Start & end date logging  
-- Automatic duration calculation  
-- Symptom recording  
+- Log start & end dates  
+- Automatic duration calculation  
+- Symptom recording  
 
 ### 😊 Mood Tracking
-- Mood score (1–5)  
-- Converted emotional label  
-- Mood averaging  
+- Mood score (1–5)  
+- Converts score to descriptive label  
+- Mood averaging  
 
 ### 🌟 Premium Features
-- Cycle regularity score  
-- Health insights dashboard  
-- Mood-based wellness suggestions  
+- Health insights dashboard  
+- Cycle regularity score  
+- Mood-based wellness suggestions  
 
 ### 🔮 Predictive Analytics
-Automatically estimates:
-- Next period  
-- Menstrual phase  
-- Follicular phase  
-- Ovulation  
-- Luteal phase  
+- Predict next period  
+- Menstrual phases: Menstrual, Follicular, Ovulation, Luteal  
 
 ### 📋 Cycle History Viewer
-- Neatly formatted console table  
-- Shows all relevant cycle information  
+- Formatted console table with all cycle information  
 
 ---
 
 # 🧠 OOP Concepts Used
 
-### 🔷 Encapsulation  
-Private fields with controlled access.
+## 🔷 Encapsulation
 
-### 🔷 Inheritance  
-- `User` inherits from `BaseUser`  
-- `PremiumUser` extends `User`  
-- `MoodCycle` extends `Cycle`
+# Private fields with controlled access via getters and setters.
 
-### 🔷 Polymorphism  
-Overridden methods like `isPremium()` and feature-specific behavior.
+# Examples:
 
-### 🔷 Abstraction  
-Shared logic in abstract classes (`BaseUser`, `Person`).
+# - Cycle.java → startDate, endDate, symptoms, mood, moodValue
+
+# - User.java → name, password
+
+# - Person.java → name, password
+
+## 🔷 Inheritance
+
+# Represents “is-a” relationships between classes.
+
+# Examples:
+
+# - User extends Person → A User **is a** Person
+
+# - PremiumUser extends User → A PremiumUser **is a** User
+
+# - MoodCycle extends Cycle → A MoodCycle **is a** Cycle
+
+## 🔷 Polymorphism
+
+# Sam
+
 
 ---
 
@@ -140,10 +177,10 @@ Shared logic in abstract classes (`BaseUser`, `Person`).
 
 /FlowCtrl
 ├── FlowCtrl.java
+├── Person.java
 ├── BaseUser.java
 ├── User.java
 ├── PremiumUser.java
-├── Person.java
 ├── Cycle.java
 ├── MoodCycle.java
 └── README.md
@@ -154,51 +191,26 @@ Shared logic in abstract classes (`BaseUser`, `Person`).
 
 # 🚀 How to Run the Program
 
-## **Step 1: Make Sure You Have Java Installed**
-If not, download from:  
-https://www.java.com/download  
+1. **Install Java** (if not installed) → https://www.java.com/download  
+2. **Place all files in one folder**  
+3. **Open Terminal / Command Prompt**  
+   - Windows: `Win + R` → `cmd` → Enter  
+   - Mac: `Command + Space` → `terminal` → Enter  
+4. **Navigate to program folder:**  
+   ```bash
+   cd /path/to/FlowCtrl
+    ````
 
-Install normally.
+5. **Compile all files:**
 
-## **Step 2: Place All Files in One Folder**
-Make sure these files are together:
+   ```bash
+   javac *.java
+   ```
+6. **Run the program:**
 
-- FlowCtrl.java  
-- BaseUser.java  
-- User.java  
-- PremiumUser.java  
-- Person.java  
-- Cycle.java  
-- MoodCycle.java  
-
-## **Step 3: Open Command Prompt / Terminal**
-
-### Windows:
-Press **Windows Key + R** → type `cmd` → Enter  
-
-### Mac:
-Press **Command + Space** → type `terminal` → Enter  
-
-## **Step 4: Go to Your Program Folder**
-
-Example:
-```bash
-cd Downloads/FlowCtrl
-````
-
-## **Step 5: Compile the Program**
-
-```bash
-javac *.java
-```
-
-If no errors appear, you're good\!
-
-## **Step 6: Run the Program**
-
-```bash
-java FlowCtrl
-```
+   ```bash
+   java FlowCtrl
+   ```
 
 -----
 
