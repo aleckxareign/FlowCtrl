@@ -1,5 +1,5 @@
-import java.text.*;
-import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Cycle {
     private String startDate;
@@ -46,5 +46,11 @@ public class Cycle {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    // Polymorphic method
+    public void displayCycleInfo(int count) {
+        System.out.printf("%d. Cycle from %s to %s, Duration: %d days, Mood: %s, Symptoms: %s%n",
+                count, startDate, endDate, getCycleLength(), mood, symptoms);
     }
 }
