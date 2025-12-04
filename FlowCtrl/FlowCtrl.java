@@ -53,37 +53,44 @@ public class FlowCtrl {
     }
 
     static void signUp() {
-        System.out.println("\n=== SIGN UP ===");
-        System.out.print("Enter your name: ");
-        String name = sc.nextLine();
-        System.out.print("Create a password: ");
-        String password = sc.nextLine();
-        System.out.print("Confirm password: ");
-        String confirm = sc.nextLine();
+    System.out.println("\n=== SIGN UP ===");
+    System.out.print("Enter your name: ");
+    String name = sc.nextLine();
+    System.out.print("Create a password: ");
+    String password = sc.nextLine();
+    System.out.print("Confirm password: ");
+    String confirm = sc.nextLine();
 
-        if (!password.equals(confirm)) {
-            System.out.println("Passwords do not match. Try again.");
-            return;
-        }
-        if (users.containsKey(name)) {
-            System.out.println("Username already exists.");
-            return;
-        }
-
-        System.out.print("Do you want a Premium account? (yes/no): ");
-        String type = sc.nextLine();
-
-        User newUser;
-        if (type.equalsIgnoreCase("yes")) {
-            newUser = new PremiumUser(name, password);
-        } else {
-            newUser = new User(name, password);
-        }
-
-        users.put(name, newUser);
-        System.out.println("Account created successfully! You may now log in.\n");
+    if (!password.equals(confirm)) {
+        System.out.println("Passwords do not match. Try again.");
+        return;
+    }
+    if (users.containsKey(name)) {
+        System.out.println("Username already exists.");
+        return;
     }
 
+    String type;
+    while (true) {
+        System.out.print("Do you want a Premium account? (yes/no): ");
+        type = sc.nextLine().trim();  
+        if (type.equalsIgnoreCase("yes") || type.equalsIgnoreCase("no")) {
+            break;  
+        } else {
+            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
+        }
+    }
+
+    User newUser;
+    if (type.equalsIgnoreCase("yes")) {
+        newUser = new PremiumUser(name, password);
+    } else {
+        newUser = new User(name, password);
+    }
+
+    users.put(name, newUser);
+    System.out.println("Account created successfully! You may now log in.\n");
+}
 
     static void login() {
     System.out.println("\n=== LOG IN ===");
@@ -96,8 +103,8 @@ public class FlowCtrl {
     if (user != null && user.getPassword().equals(password)) {
         loggedInUser = user;
         System.out.println("Login successful. Welcome, " + name + "!");
-        loggedInUser.displayInfo();  // demonstrates polymorphism
-        loggedInUser.greet();  // also polymorphic
+        loggedInUser.displayInfo();  
+        loggedInUser.greet();  
         mainMenu();
     } else {
         System.out.println("Invalid name or password.\n");
@@ -112,7 +119,7 @@ public class FlowCtrl {
                 System.out.println("========================================");
                 System.out.println("[1] Add New Cycle");
                 System.out.println("[2] View Cycle History");
-                System.out.println("[3] View Health Insights"); // always visible
+                System.out.println("[3] View Health Insights"); 
                 System.out.println("[4] Predict Next Cycle");
                 System.out.println("[5] Logout");
                 System.out.print("Enter choice: ");
@@ -149,44 +156,85 @@ public class FlowCtrl {
         }
     }
 
-    static void addCycle() {
-        System.out.println("\n--- Add New Cycle ---");
+static void addCycle() {
+    System.out.println("\n--- Add New Cycle ---");
+    
+    String start;
+    while (true) {
         System.out.print("Enter start date (YYYY-MM-DD): ");
-        String start = sc.nextLine();
+        start = sc.nextLine().trim();
+        if (isValidDate(start)) {
+            break;
+        } else {
+            System.out.println("Invalid date format or value. Please enter a valid date in YYYY-MM-DD format.");
+        }
+    }
+    
+    String end;
+    while (true) {
         System.out.print("Enter end date (YYYY-MM-DD): ");
-        String end = sc.nextLine();
-        System.out.print("Enter symptoms (comma-separated): ");
-        String symptoms = sc.nextLine();
+        end = sc.nextLine().trim();
+        if (isValidDate(end)) {
+            break;
+        } else {
+            System.out.println("Invalid date format or value. Please enter a valid date in YYYY-MM-DD format.");
+        }
+    }
+    
+    System.out.print("Enter symptoms (comma-separated): ");
+    String symptoms = sc.nextLine();
 
-        System.out.println("Select mood (1-5):");
-        System.out.println("1 - Very Positive ");
-        System.out.println("2 - Positive");
-        System.out.println("3 - Neutral");
-        System.out.println("4 - Negative");
-        System.out.println("5 - Very Negative");
+    System.out.println("Select mood (1-5):");
+    System.out.println("1 - Very Positive ");
+    System.out.println("2 - Positive");
+    System.out.println("3 - Neutral");
+    System.out.println("4 - Negative");
+    System.out.println("5 - Very Negative");
+    
+
+    int moodChoice;
+    while (true) {
         System.out.print("Choice: ");
-
-        int moodChoice = 3;
         try {
             moodChoice = sc.nextInt();
+            if (moodChoice >= 1 && moodChoice <= 5) {
+                break;  
+            } else {
+                System.out.println("Invalid choice. Please enter a number between 1 and 5.");
+            }
         } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Defaulting to Neutral.");
-            sc.nextLine();
+            System.out.println("Invalid input. Please enter a number between 1 and 5.");
+            sc.nextLine(); 
         }
-        sc.nextLine();
+    }
+    sc.nextLine();  
 
-        String mood = getMoodString(moodChoice);
-        loggedInUser.addCycle(new MoodCycle(start, end, symptoms, mood, moodChoice));
-        System.out.println("Cycle recorded successfully!");
+    String mood = getMoodString(moodChoice);
+    loggedInUser.addCycle(new MoodCycle(start, end, symptoms, mood, moodChoice));
+    System.out.println("Cycle recorded successfully!");
+}
+
+        static boolean isValidDate(String dateStr) {
+        if (dateStr == null || !dateStr.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            return false;  
+        }
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            sdf.setLenient(false);  
+            sdf.parse(dateStr);  
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     static void viewCycleHistory() {
-        System.out.println("\n========================================================================================");
+        System.out.println("\n=====================================================================================================");
         System.out.println("                             Cycle History for " + loggedInUser.getName());
-        System.out.println("========================================================================================");
+        System.out.println("=====================================================================================================");
         System.out.printf("%-3s | %-12s | %-12s | %-8s | %-25s | %-15s%n",
                 "#", "Start Date", "End Date", "Duration", "Symptoms", "Mood");
-        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------");
 
         if (loggedInUser.getCycles().isEmpty()) {
             System.out.println("No records found.");
@@ -195,7 +243,7 @@ public class FlowCtrl {
 
         int count = 1;
         for (Cycle c : loggedInUser.getCycles()) {
-            c.displayCycleInfo(count);  // Polymorphism: Calls the appropriate displayCycleInfo implementation
+            c.displayCycleInfo(count);  
             count++;
         }
     }
