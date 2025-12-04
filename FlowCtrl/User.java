@@ -1,25 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class User extends Person {
-    protected List<Cycle> cycles = new ArrayList<>();
-
+public class User extends BaseUser {  // Fixed: Now extends BaseUser for proper inheritance
+    // Removed redundant cycles list and addCycle method (inherited from BaseUser)
     public User(String name, String password) {
         super(name, password);
     }
-
-    public List<Cycle> getCycles() {
-        return cycles;
+    // Abstraction/Polymorphism: Implements the abstract greet() method from BaseUser
+    @Override
+    public void greet() {
+        System.out.println("Hello, " + getName() + "! Welcome to FlowCtrl.");
     }
-
-    public void addCycle(Cycle cycle) {
-        cycles.add(cycle);
-    }
-
     public boolean isPremium() {
         return false;
     }
-
     @Override
     public void displayInfo() {
         System.out.println("User: " + getName() + " (Standard Account)");
