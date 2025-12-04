@@ -1,5 +1,5 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.*;
+import java.util.*;
 
 public class Cycle {
     private String startDate;
@@ -48,9 +48,9 @@ public class Cycle {
         }
     }
 
-    // Polymorphic method
+    // Added for polymorphism: Base display method that subclasses can override
     public void displayCycleInfo(int count) {
-        System.out.printf("%d. Cycle from %s to %s, Duration: %d days, Mood: %s, Symptoms: %s%n",
-                count, startDate, endDate, getCycleLength(), mood, symptoms);
+        System.out.printf("%-3d | %-12s | %-12s | %-8d | %-25s | %-15s%n",
+                count, getStartDate(), getEndDate(), getCycleLength(), getSymptoms(), getMood());
     }
 }
