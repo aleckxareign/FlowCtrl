@@ -1,5 +1,4 @@
-public class User extends BaseUser {  // Fixed: Now extends BaseUser for proper inheritance
-    // Removed redundant cycles list and addCycle method (inherited from BaseUser)
+public class User extends BaseUser {  // extends BaseUser for proper inheritance
     public User(String name, String password) {
         super(name, password);
     }
@@ -16,3 +15,4 @@ public class User extends BaseUser {  // Fixed: Now extends BaseUser for proper 
         System.out.println("User: " + getName() + " (Standard Account)");
     }
 }
+
