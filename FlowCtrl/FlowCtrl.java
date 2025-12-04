@@ -84,67 +84,70 @@ public class FlowCtrl {
         System.out.println("Account created successfully! You may now log in.\n");
     }
 
+
     static void login() {
-        System.out.println("\n=== LOG IN ===");
-        System.out.print("Enter name: ");
-        String name = sc.nextLine();
-        System.out.print("Enter password: ");
-        String password = sc.nextLine();
+    System.out.println("\n=== LOG IN ===");
+    System.out.print("Enter name: ");
+    String name = sc.nextLine();
+    System.out.print("Enter password: ");
+    String password = sc.nextLine();
 
-        User user = users.get(name);
-        if (user != null && user.getPassword().equals(password)) {
-            loggedInUser = user;
-            System.out.println("Login successful. Welcome, " + name + "!");
-            mainMenu();
-        } else {
-            System.out.println("Invalid name or password.\n");
-        }
-    }
-
-static void mainMenu() {
-    while (true) {
-        try {
-            System.out.println("========================================");
-            System.out.println("                FlowCtrl         ");
-            System.out.println("========================================");
-            System.out.println("[1] Add New Cycle");
-            System.out.println("[2] View Cycle History");
-            System.out.println("[3] View Health Insights"); // always visible
-            System.out.println("[4] Predict Next Cycle");
-            System.out.println("[5] Logout");
-            System.out.print("Enter choice: ");
-
-            int choice = sc.nextInt();
-            sc.nextLine();
-
-            if (choice == 1) {
-                addCycle();
-            } else if (choice == 2) {
-                viewCycleHistory();
-            } else if (choice == 3) {
-                if (loggedInUser.isPremium()) {
-                    ((PremiumUser) loggedInUser).viewHealthInsights();
-                } else {
-                    System.out.println("\nThis feature is available for Premium users only.");
-                    System.out.println("Upgrade to Premium to access personalized health insights.\n");
-                }
-            } else if (choice == 4) {
-                predictNextCycle();
-            } else if (choice == 5) {
-                System.out.println("Logging out...");
-                System.out.println("You're all set, " + loggedInUser.getName() + "! Wishing you balance and calm today.");
-                loggedInUser = null;
-                return;
-            } else {
-                System.out.println("Invalid choice.");
-            }
-
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please enter a number.");
-            sc.nextLine();
-        }
+    User user = users.get(name);
+    if (user != null && user.getPassword().equals(password)) {
+        loggedInUser = user;
+        System.out.println("Login successful. Welcome, " + name + "!");
+        loggedInUser.displayInfo();  // demonstrates polymorphism
+        loggedInUser.greet();  // also polymorphic
+        mainMenu();
+    } else {
+        System.out.println("Invalid name or password.\n");
     }
 }
+
+    static void mainMenu() {
+        while (true) {
+            try {
+                System.out.println("========================================");
+                System.out.println("                FlowCtrl         ");
+                System.out.println("========================================");
+                System.out.println("[1] Add New Cycle");
+                System.out.println("[2] View Cycle History");
+                System.out.println("[3] View Health Insights"); // always visible
+                System.out.println("[4] Predict Next Cycle");
+                System.out.println("[5] Logout");
+                System.out.print("Enter choice: ");
+
+                int choice = sc.nextInt();
+                sc.nextLine();
+
+                if (choice == 1) {
+                    addCycle();
+                } else if (choice == 2) {
+                    viewCycleHistory();
+                } else if (choice == 3) {
+                    if (loggedInUser.isPremium()) {
+                        ((PremiumUser) loggedInUser).viewHealthInsights();
+                    } else {
+                        System.out.println("\nThis feature is available for Premium users only.");
+                        System.out.println("Upgrade to Premium to access personalized health insights.\n");
+                    }
+                } else if (choice == 4) {
+                    predictNextCycle();
+                } else if (choice == 5) {
+                    System.out.println("Logging out...");
+                    System.out.println("You're all set, " + loggedInUser.getName() + "! Wishing you balance and calm today.");
+                    loggedInUser = null;
+                    return;
+                } else {
+                    System.out.println("Invalid choice.");
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                sc.nextLine();
+            }
+        }
+    }
 
     static void addCycle() {
         System.out.println("\n--- Add New Cycle ---");
@@ -173,17 +176,17 @@ static void mainMenu() {
         sc.nextLine();
 
         String mood = getMoodString(moodChoice);
-        loggedInUser.addCycle(new Cycle(start, end, symptoms, mood, moodChoice));
+        loggedInUser.addCycle(new MoodCycle(start, end, symptoms, mood, moodChoice));
         System.out.println("Cycle recorded successfully!");
     }
 
     static void viewCycleHistory() {
-        System.out.println("\n=====================================================================================");
+        System.out.println("\n========================================================================================");
         System.out.println("                             Cycle History for " + loggedInUser.getName());
-        System.out.println("=====================================================================================");
+        System.out.println("========================================================================================");
         System.out.printf("%-3s | %-12s | %-12s | %-8s | %-25s | %-15s%n",
                 "#", "Start Date", "End Date", "Duration", "Symptoms", "Mood");
-        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------");
 
         if (loggedInUser.getCycles().isEmpty()) {
             System.out.println("No records found.");
@@ -192,117 +195,116 @@ static void mainMenu() {
 
         int count = 1;
         for (Cycle c : loggedInUser.getCycles()) {
-            System.out.printf("%-3d | %-12s | %-12s | %-8d | %-25s | %-15s%n",
-                    count, c.getStartDate(), c.getEndDate(), c.getCycleLength(), c.getSymptoms(), c.getMood());
+            c.displayCycleInfo(count);  // Polymorphism: Calls the appropriate displayCycleInfo implementation
             count++;
         }
     }
 
     static void predictNextCycle() {
-    if (loggedInUser.getCycles().size() < 1) {
-        System.out.println("Not enough data to predict your next cycle.");
-        return;
-    }
-
-    double avgCycleLength = getAverageCycleLength(loggedInUser);
-    double avgDuration = getAverageDuration(loggedInUser);
-
-    if (avgCycleLength == 0) {
-        System.out.println("Unable to calculate average cycle length.");
-        return;
-    }
-
-    try {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Cycle lastCycle = loggedInUser.getCycles().get(loggedInUser.getCycles().size() - 1);
-        Date lastStart = sdf.parse(lastCycle.getStartDate());
-
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(lastStart);
-        cal.add(Calendar.DAY_OF_MONTH, (int) Math.round(avgCycleLength));
-
-        String predictedStart = sdf.format(cal.getTime());
-
-        System.out.println("\n------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Calculating average cycle length...");
-        System.out.println("Average cycle length: " + (int) avgCycleLength + " days");
-        System.out.println("Your next period is likely to start on: " + predictedStart);
-        System.out.println("------------------------------------------------------------------------------------------------------------------------");
-
-        System.out.println("\nPredicted Menstrual Phases Based on Your Average Data:");
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.printf("%-20s | %-15s | %-15s%n", "Phase", "Start Date", "End Date");
-        System.out.println("-------------------------------------------------------------------------------------");
-
-        // Compute cycle stability (variance)
-        List<Long> intervals = new ArrayList<Long>();
-        for (int i = 1; i < loggedInUser.getCycles().size(); i++) {
-            Date prev = sdf.parse(loggedInUser.getCycles().get(i - 1).getStartDate());
-            Date curr = sdf.parse(loggedInUser.getCycles().get(i).getStartDate());
-            intervals.add((curr.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24));
+        if (loggedInUser.getCycles().size() < 1) {
+            System.out.println("Not enough data to predict your next cycle.");
+            return;
         }
 
-        double variance = 0;
-        if (!intervals.isEmpty()) {
-            for (Long val : intervals) variance += Math.pow(val - avgCycleLength, 2);
-            variance = variance / intervals.size();
+        double avgCycleLength = getAverageCycleLength(loggedInUser);
+        double avgDuration = getAverageDuration(loggedInUser);
+
+        if (avgCycleLength == 0) {
+            System.out.println("Unable to calculate average cycle length.");
+            return;
         }
 
-        // Adaptive phase percentages
-        double stabilityFactor = variance < 9 ? 1.0 : (variance < 25 ? 0.9 : 0.8);
-        double follicularPercent = 0.45 * stabilityFactor;
-        double ovulationPercent = 0.05;
-        double lutealPercent = 1 - follicularPercent - ovulationPercent;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Cycle lastCycle = loggedInUser.getCycles().get(loggedInUser.getCycles().size() - 1);
+            Date lastStart = sdf.parse(lastCycle.getStartDate());
 
-        int menstrualLength = (int) Math.round(avgDuration);
-        int follicularLength = (int) Math.max(1, Math.round(avgCycleLength * follicularPercent) - menstrualLength);
-        int ovulationLength = (int) Math.max(1, Math.round(avgCycleLength * ovulationPercent));
-        int lutealLength = (int) Math.max(1, Math.round(avgCycleLength * lutealPercent) - ovulationLength);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(lastStart);
+            cal.add(Calendar.DAY_OF_MONTH, (int) Math.round(avgCycleLength));
 
-        Calendar phaseCal = Calendar.getInstance();
-        phaseCal.setTime(sdf.parse(predictedStart));
+            String predictedStart = sdf.format(cal.getTime());
 
-        // Menstrual Phase
-        Date menstrualStart = phaseCal.getTime();
-        phaseCal.add(Calendar.DAY_OF_MONTH, menstrualLength - 1);
-        Date menstrualEnd = phaseCal.getTime();
-        System.out.printf("%-20s | %-15s | %-15s%n",
-                "Menstrual", sdf.format(menstrualStart), sdf.format(menstrualEnd));
+            System.out.println("\n------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("Calculating average cycle length...");
+            System.out.println("Average cycle length: " + (int) avgCycleLength + " days");
+            System.out.println("Your next period is likely to start on: " + predictedStart);
+            System.out.println("------------------------------------------------------------------------------------------------------------------------");
 
-        // Follicular Phase
-        phaseCal.add(Calendar.DAY_OF_MONTH, 1);
-        Date follicularStart = phaseCal.getTime();
-        phaseCal.add(Calendar.DAY_OF_MONTH, follicularLength - 1);
-        Date follicularEnd = phaseCal.getTime();
-        System.out.printf("%-20s | %-15s | %-15s%n",
-                "Follicular", sdf.format(follicularStart), sdf.format(follicularEnd));
+            System.out.println("\nPredicted Menstrual Phases Based on Your Average Data:");
+            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.printf("%-20s | %-15s | %-15s%n", "Phase", "Start Date", "End Date");
+            System.out.println("-------------------------------------------------------------------------------------");
 
-        // Ovulation Phase
-        phaseCal.add(Calendar.DAY_OF_MONTH, 1);
-        Date ovulationStart = phaseCal.getTime();
-        phaseCal.add(Calendar.DAY_OF_MONTH, ovulationLength - 1);
-        Date ovulationEnd = phaseCal.getTime();
-        System.out.printf("%-20s | %-15s | %-15s%n",
-                "Ovulation", sdf.format(ovulationStart), sdf.format(ovulationEnd));
+            // Compute cycle stability (variance)
+            List<Long> intervals = new ArrayList<Long>();
+            for (int i = 1; i < loggedInUser.getCycles().size(); i++) {
+                Date prev = sdf.parse(loggedInUser.getCycles().get(i - 1).getStartDate());
+                Date curr = sdf.parse(loggedInUser.getCycles().get(i).getStartDate());
+                intervals.add((curr.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24));
+            }
 
-        // Luteal Phase
-        phaseCal.add(Calendar.DAY_OF_MONTH, 1);
-        Date lutealStart = phaseCal.getTime();
-        phaseCal.add(Calendar.DAY_OF_MONTH, lutealLength - 1);
-        Date lutealEnd = phaseCal.getTime();
-        System.out.printf("%-20s | %-15s | %-15s%n",
-                "Luteal", sdf.format(lutealStart), sdf.format(lutealEnd));
+            double variance = 0;
+            if (!intervals.isEmpty()) {
+                for (Long val : intervals) variance += Math.pow(val - avgCycleLength, 2);
+                variance = variance / intervals.size();
+            }
 
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println("\nNote: These predictions are based on statistical estimations from your recorded data.");
-        System.out.println("They are not guaranteed to be accurate and should not replace professional medical consultation.");
-        System.out.println("This tool is intended to assist with personal tracking and awareness only.");
-        System.out.println("-------------------------------------------------------------------------------------");
+            // Adaptive phase percentages
+            double stabilityFactor = variance < 9 ? 1.0 : (variance < 25 ? 0.9 : 0.8);
+            double follicularPercent = 0.45 * stabilityFactor;
+            double ovulationPercent = 0.05;
+            double lutealPercent = 1 - follicularPercent - ovulationPercent;
 
-    } catch (Exception e) {
-        System.out.println("Error calculating prediction.");
+            int menstrualLength = (int) Math.round(avgDuration);
+            int follicularLength = (int) Math.max(1, Math.round(avgCycleLength * follicularPercent) - menstrualLength);
+            int ovulationLength = (int) Math.max(1, Math.round(avgCycleLength * ovulationPercent));
+            int lutealLength = (int) Math.max(1, Math.round(avgCycleLength * lutealPercent) - ovulationLength);
+
+            Calendar phaseCal = Calendar.getInstance();
+            phaseCal.setTime(sdf.parse(predictedStart));
+
+            // Menstrual Phase
+            Date menstrualStart = phaseCal.getTime();
+            phaseCal.add(Calendar.DAY_OF_MONTH, menstrualLength - 1);
+            Date menstrualEnd = phaseCal.getTime();
+            System.out.printf("%-20s | %-15s | %-15s%n",
+                    "Menstrual", sdf.format(menstrualStart), sdf.format(menstrualEnd));
+
+            // Follicular Phase
+            phaseCal.add(Calendar.DAY_OF_MONTH, 1);
+            Date follicularStart = phaseCal.getTime();
+            phaseCal.add(Calendar.DAY_OF_MONTH, follicularLength - 1);
+            Date follicularEnd = phaseCal.getTime();
+            System.out.printf("%-20s | %-15s | %-15s%n",
+                    "Follicular", sdf.format(follicularStart), sdf.format(follicularEnd));
+
+            // Ovulation Phase
+            phaseCal.add(Calendar.DAY_OF_MONTH, 1);
+            Date ovulationStart = phaseCal.getTime();
+            phaseCal.add(Calendar.DAY_OF_MONTH, ovulationLength - 1);
+            Date ovulationEnd = phaseCal.getTime();
+            System.out.printf("%-20s | %-15s | %-15s%n",
+                    "Ovulation", sdf.format(ovulationStart), sdf.format(ovulationEnd));
+
+            // Luteal Phase
+            phaseCal.add(Calendar.DAY_OF_MONTH, 1);
+            Date lutealStart = phaseCal.getTime();
+            phaseCal.add(Calendar.DAY_OF_MONTH, lutealLength - 1);
+            Date lutealEnd = phaseCal.getTime();
+            System.out.printf("%-20s | %-15s | %-15s%n",
+                    "Luteal", sdf.format(lutealStart), sdf.format(lutealEnd));
+
+            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("\nNote: These predictions are based on statistical estimations from your recorded data.");
+            System.out.println("They are not guaranteed to be accurate and should not replace professional medical consultation.");
+            System.out.println("This tool is intended to assist with personal tracking and awareness only.");
+            System.out.println("-------------------------------------------------------------------------------------");
+
+        } catch (Exception e) {
+            System.out.println("Error calculating prediction.");
+        }
     }
-}
 
     static String getMoodString(int choice) {
         switch (choice) {
@@ -362,5 +364,3 @@ static void mainMenu() {
         return mostCommon;
     }
 }
-
-
