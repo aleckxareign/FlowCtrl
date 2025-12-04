@@ -48,9 +48,10 @@ public class Cycle {
         }
     }
 
-    // Added for polymorphism: Base display method that subclasses can override
+    // Polymorphism: Base display method that subclasses can override
     public void displayCycleInfo(int count) {
         System.out.printf("%-3d | %-12s | %-12s | %-8d | %-25s | %-15s%n",
                 count, getStartDate(), getEndDate(), getCycleLength(), getSymptoms(), getMood());
     }
 }
+
