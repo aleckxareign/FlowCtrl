@@ -19,6 +19,11 @@ public class PremiumUser extends User {
         System.out.println("User: " + getName() + " (Premium Account)");
     }
 
+    @Override
+    public void greet() {
+        System.out.println("Hello, " + getName() + "! As a Premium user, enjoy enhanced insights.");
+    }
+
     public void viewHealthInsights() {
         if (getCycles().isEmpty()) {
             System.out.println("No cycle data available.");
@@ -48,7 +53,7 @@ public class PremiumUser extends User {
                 intervals.add((curr.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24));
             }
         } catch (Exception e) {
-            // ignore parse errors
+            // Exception handling: Ignore parse errors to prevent crashes
         }
 
         double variance = 0;
